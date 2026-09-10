@@ -2,8 +2,9 @@
 
 import { use } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { ChevronLeft, CheckCircle2, Clock, MapPin, Truck, Package } from "lucide-react";
-import { mockOrders, mockZones } from "@/lib/mock-data";
+import { mockOrders, mockZones, mockProducts } from "@/lib/mock-data";
 
 export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -89,6 +90,53 @@ export default function OrderDetailPage({ params }: { params: Promise<{ id: stri
             <div className="flex pt-3 border-t mt-3">
               <span className="w-1/3 text-brand-ink-muted">No. Manifest</span>
               <span className="w-2/3 font-medium text-brand-ink">{order.manifestId}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Rincian Produk */}
+      <div className="bg-brand-surface rounded-xl border p-5 mb-6">
+        <h3 className="font-bold text-brand-ink mb-4 font-display">Rincian Produk</h3>
+        <div className="space-y-4">
+          {[mockProducts[parseInt(order.id.replace(/\D/g, '') || '0') % mockProducts.length]].map(product => (
+            <div key={product.id} className="flex gap-4">
+              <div className="w-16 h-16 bg-white rounded-xl p-1 border border-brand-border/50 shrink-0 relative">
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  fill
+                  sizes="64px"
+                  className="object-contain p-1 mix-blend-multiply" 
+                />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-brand-ink text-sm">{product.name}</div>
+                <div className="text-xs text-brand-ink-muted mt-1">1 x Rp{product.price.toLocaleString('id-ID')}</div>
+              </div>
+              <div className="font-bold text-brand-ink text-sm">
+                Rp{product.price.toLocaleString('id-ID')}
+              </div>
+            </div>
+          ))}
+          {order.total > 150000 && (
+            <div className="flex gap-4">
+              <div className="w-16 h-16 bg-white rounded-xl p-1 border border-brand-border/50 shrink-0 relative">
+                <Image 
+                  src={mockProducts[(parseInt(order.id.replace(/\D/g, '') || '0') + 1) % mockProducts.length].image} 
+                  alt="Product" 
+                  fill
+                  sizes="64px"
+                  className="object-contain p-1 mix-blend-multiply" 
+                />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-brand-ink text-sm">{mockProducts[(parseInt(order.id.replace(/\D/g, '') || '0') + 1) % mockProducts.length].name}</div>
+                <div className="text-xs text-brand-ink-muted mt-1">2 x Rp{mockProducts[(parseInt(order.id.replace(/\D/g, '') || '0') + 1) % mockProducts.length].price.toLocaleString('id-ID')}</div>
+              </div>
+              <div className="font-bold text-brand-ink text-sm">
+                Rp{(mockProducts[(parseInt(order.id.replace(/\D/g, '') || '0') + 1) % mockProducts.length].price * 2).toLocaleString('id-ID')}
+              </div>
             </div>
           )}
         </div>
