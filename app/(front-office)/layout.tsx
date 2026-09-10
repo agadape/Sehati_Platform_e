@@ -16,12 +16,12 @@ export default function FrontOfficeLayout({
   const isLogin = pathname === "/login";
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col pb-16 md:pb-0 font-sans text-gray-900">
+    <div className="min-h-screen bg-brand-surface flex flex-col pb-16 md:pb-0 font-sans text-brand-ink-muted">
       {/* Header Desktop & Mobile Top */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 transition-all">
+      <header className="bg-white/80 backdrop-blur-md border-b border-brand-border sticky top-0 z-50 transition-all">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center rounded-xl font-black text-xl shadow-sm shadow-blue-200">
+            <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center rounded-xl font-black text-xl shadow-sm shadow-brand">
               S
             </div>
             <span className="font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-900 to-blue-700 hidden sm:block">
@@ -34,24 +34,24 @@ export default function FrontOfficeLayout({
               <input 
                 type="text" 
                 placeholder="Cari kebutuhan harianmu di sini..." 
-                className="w-full pl-11 pr-4 py-2.5 border border-gray-200 rounded-full bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 text-sm transition-all shadow-sm inset-y-0"
+                className="w-full pl-11 pr-4 py-2.5 border border-brand-border rounded-full bg-brand-surface/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm transition-all shadow-sm inset-y-0"
               />
-              <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+              <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-brand-ink-muted group-focus-within:text-brand transition-colors" />
             </div>
           </div>
 
           <div className="flex items-center gap-2 md:gap-5 flex-shrink-0">
             {/* Mobile Search Icon */}
-            <button className="p-2 text-gray-600 md:hidden hover:bg-gray-100 rounded-full">
+            <button className="p-2 text-brand-ink-muted md:hidden hover:bg-brand-surface rounded-full">
               <Search className="w-5 h-5" />
             </button>
 
-            <Link href="/login" className="hidden md:flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors">
+            <Link href="/login" className="hidden md:flex items-center gap-2 text-sm font-semibold text-brand-ink-muted hover:text-brand px-3 py-2 rounded-lg hover:bg-brand transition-colors">
               <User className="w-5 h-5" />
               Masuk
             </Link>
             
-            <Link href="/keranjang" className="relative p-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-full transition-colors">
+            <Link href="/keranjang" className="relative p-2 text-brand-ink-muted hover:bg-brand hover:text-brand rounded-full transition-colors">
               <ShoppingCart className="w-6 h-6" />
               <span className="absolute top-0 right-0 bg-red-500 border-2 border-white text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
                 2
@@ -67,16 +67,16 @@ export default function FrontOfficeLayout({
       </main>
 
       {/* Bottom Navigation for Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around p-2 pb-safe z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <Link href="/" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isHome ? 'text-blue-600' : 'text-gray-400 hover:text-gray-600'}`}>
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-brand-border flex justify-around p-2 pb-safe z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <Link href="/" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isHome ? 'text-brand' : 'text-brand-ink-muted hover:text-brand-ink-muted'}`}>
           <Home className={`w-6 h-6 mb-1 ${isHome ? 'fill-blue-50' : ''}`} />
           <span className="text-[10px] font-bold">Beranda</span>
         </Link>
-        <Link href="/pesanan" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isPesanan ? 'text-blue-600' : 'text-gray-400 hover:text-gray-600'}`}>
+        <Link href="/pesanan" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isPesanan ? 'text-brand' : 'text-brand-ink-muted hover:text-brand-ink-muted'}`}>
           <Package className={`w-6 h-6 mb-1 ${isPesanan ? 'fill-blue-50' : ''}`} />
           <span className="text-[10px] font-bold">Pesanan</span>
         </Link>
-        <Link href="/login" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isLogin ? 'text-blue-600' : 'text-gray-400 hover:text-gray-600'}`}>
+        <Link href="/login" className={`flex flex-col items-center p-2 rounded-xl transition-colors ${isLogin ? 'text-brand' : 'text-brand-ink-muted hover:text-brand-ink-muted'}`}>
           <User className={`w-6 h-6 mb-1 ${isLogin ? 'fill-blue-50' : ''}`} />
           <span className="text-[10px] font-bold">Akun</span>
         </Link>
@@ -84,3 +84,4 @@ export default function FrontOfficeLayout({
     </div>
   );
 }
+

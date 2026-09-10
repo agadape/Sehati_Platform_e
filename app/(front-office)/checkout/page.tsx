@@ -31,55 +31,55 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-4xl mx-auto pb-24 md:pb-8 animate-in slide-in-from-bottom-4 fade-in duration-300">
       <div className="flex items-center gap-3 mb-6 cursor-pointer hover:opacity-80 transition-opacity w-fit" onClick={() => router.back()}>
-        <div className="p-2 bg-white rounded-full shadow-sm border border-gray-100">
-          <ChevronLeft className="w-5 h-5 text-gray-700" />
+        <div className="p-2 bg-brand-surface rounded-full shadow-soft border border-brand-border">
+          <ChevronLeft className="w-5 h-5 text-brand-ink" />
         </div>
-        <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Checkout</h1>
+        <h1 className="text-2xl font-extrabold font-display text-brand-ink tracking-tight">Checkout</h1>
       </div>
 
       <div className="lg:flex gap-8">
         <div className="lg:flex-1 space-y-6">
           
           {/* Zona Pengiriman */}
-          <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
-            <h2 className="font-extrabold text-gray-900 mb-5 flex items-center gap-2.5 text-lg">
-              <div className="bg-blue-100 p-2 rounded-xl text-blue-600">
+          <div className="bg-brand-surface p-6 rounded-3xl border border-brand-border shadow-soft">
+            <h2 className="font-extrabold font-display text-brand-ink mb-5 flex items-center gap-2.5 text-lg">
+              <div className="bg-brand p-2 rounded-xl text-brand-ink">
                 <MapPin className="w-5 h-5" />
               </div>
               Alamat & Zona Pengiriman
             </h2>
             <div className="mb-5">
-              <label className="block text-sm font-bold text-gray-700 mb-2">Pilih Zona Anda</label>
+              <label className="block text-sm font-bold text-brand-ink mb-2">Pilih Zona Anda</label>
               <div className="relative">
                 <select 
                   value={selectedZone}
                   onChange={(e) => setSelectedZone(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:outline-none bg-gray-50 hover:bg-white text-gray-900 font-semibold appearance-none transition-all cursor-pointer"
+                  className="w-full border border-brand-border rounded-xl p-3.5 focus:ring-4 focus:ring-brand/10 focus:border-brand focus:outline-none bg-brand-bg hover:bg-brand-surface text-brand-ink font-semibold appearance-none transition-all cursor-pointer"
                 >
                   {mockZones.map(zone => (
                     <option key={zone.id} value={zone.id}>{zone.name}</option>
                   ))}
                 </select>
                 <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                  <ChevronLeft className="w-5 h-5 text-gray-400 -rotate-90" />
+                  <ChevronLeft className="w-5 h-5 text-brand-ink-muted -rotate-90" />
                 </div>
               </div>
             </div>
             
-            <div className={`p-5 rounded-2xl flex items-start gap-4 border transition-colors ${isSameDay ? 'bg-green-50/50 border-green-200' : 'bg-blue-50/50 border-blue-200'}`}>
-              <div className={`p-2 rounded-full ${isSameDay ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600'}`}>
+            <div className={`p-5 rounded-2xl flex items-start gap-4 border transition-colors ${isSameDay ? 'bg-green-50/50 border-green-200' : 'bg-brand/50 border-brand'}`}>
+              <div className={`p-2 rounded-full ${isSameDay ? 'bg-green-100 text-green-600' : 'bg-brand text-brand-ink'}`}>
                 <Clock className="w-6 h-6" />
               </div>
               <div>
-                <div className={`font-black text-lg ${isSameDay ? 'text-green-800' : 'text-blue-800'}`}>
+                <div className={`font-black font-display text-lg ${isSameDay ? 'text-green-800' : 'text-brand-ink'}`}>
                   {isSameDay ? 'Dikirim Hari Ini (Same Day)' : 'Dikirim Besok (Next Day)'}
                 </div>
-                <p className={`text-sm mt-1.5 leading-relaxed font-medium ${isSameDay ? 'text-green-700/80' : 'text-blue-700/80'}`}>
+                <p className={`text-sm mt-1.5 leading-relaxed font-medium ${isSameDay ? 'text-green-700/80' : 'text-brand/80'}`}>
                   {isSameDay 
                     ? "Pesanan Anda masuk sebelum jam 12:00, akan dikirimkan hari ini sesuai jadwal zona." 
                     : "Pesanan masuk setelah jam 12:00, akan masuk jadwal pengiriman keesokan harinya."}
                 </p>
-                <div className={`mt-3 inline-block px-3 py-1 rounded-lg text-xs font-bold ${isSameDay ? 'bg-green-200/50 text-green-800' : 'bg-blue-200/50 text-blue-800'}`}>
+                <div className={`mt-3 inline-block px-3 py-1 rounded-lg text-xs font-bold ${isSameDay ? 'bg-green-200/50 text-green-800' : 'bg-brand/50 text-brand-ink'}`}>
                   Jadwal Zona: {mockZones.find(z => z.id === selectedZone)?.schedule}
                 </div>
               </div>
@@ -87,8 +87,8 @@ export default function CheckoutPage() {
           </div>
 
           {/* Promo */}
-          <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
-            <h2 className="font-extrabold text-gray-900 mb-5 flex items-center gap-2.5 text-lg">
+          <div className="bg-brand-surface p-6 rounded-3xl border border-brand-border shadow-soft">
+            <h2 className="font-extrabold font-display text-brand-ink mb-5 flex items-center gap-2.5 text-lg">
               <div className="bg-indigo-100 p-2 rounded-xl text-indigo-600">
                 <Ticket className="w-5 h-5" />
               </div>
@@ -100,11 +100,11 @@ export default function CheckoutPage() {
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value)}
                 placeholder="Masukkan kode SEHATI10" 
-                className="flex-1 border border-gray-200 rounded-xl p-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:outline-none bg-gray-50 uppercase font-bold tracking-wide"
+                className="flex-1 border border-brand-border rounded-xl p-3.5 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:outline-none bg-brand-bg uppercase font-bold tracking-wide"
               />
               <button 
                 onClick={handleApplyPromo}
-                className="bg-gray-900 text-white px-6 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-md shadow-gray-900/10 active:scale-95"
+                className="bg-brand-accent text-white px-6 rounded-full font-bold hover:opacity-90 transition-colors shadow-soft shadow-soft active:scale-95"
               >
                 Gunakan
               </button>
@@ -121,13 +121,13 @@ export default function CheckoutPage() {
 
         {/* Summary */}
         <div className="mt-8 lg:mt-0 lg:w-96">
-          <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/40 sticky top-24">
-            <h3 className="font-bold text-gray-900 mb-6 text-lg border-b pb-4">Ringkasan Pembayaran</h3>
+          <div className="bg-brand-surface p-6 rounded-3xl border border-brand-border shadow-soft shadow-gray-200/40 sticky top-24">
+            <h3 className="font-bold text-brand-ink mb-6 text-lg border-b pb-4 font-display">Ringkasan Pembayaran</h3>
             
-            <div className="space-y-4 text-sm font-medium text-gray-600">
+            <div className="space-y-4 text-sm font-medium text-brand-ink-muted">
               <div className="flex justify-between">
                 <span>Subtotal (2 Barang)</span>
-                <span className="text-gray-900 font-bold">Rp{subtotal.toLocaleString('id-ID')}</span>
+                <span className="text-brand-ink font-bold font-display">Rp{subtotal.toLocaleString('id-ID')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Ongkos Kirim</span>
@@ -141,19 +141,19 @@ export default function CheckoutPage() {
               )}
             </div>
             
-            <div className="border-t border-dashed border-gray-200 my-6 pt-6 flex justify-between items-center">
-              <span className="font-bold text-gray-600">Total Bayar</span>
-              <span className="font-black text-2xl text-blue-600">Rp{total.toLocaleString('id-ID')}</span>
+            <div className="border-t border-dashed border-brand-border my-6 pt-6 flex justify-between items-center">
+              <span className="font-bold text-brand-ink-muted">Total Bayar</span>
+              <span className="font-black font-display text-2xl text-brand-ink">Rp{total.toLocaleString('id-ID')}</span>
             </div>
 
             <button 
               onClick={() => router.push('/checkout/pembayaran')}
-              className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+              className="w-full bg-brand text-white font-bold py-4 rounded-full hover:bg-brand hover:shadow-soft hover:shadow-soft transition-all active:scale-[0.98] flex items-center justify-center gap-2"
             >
               Pilih Pembayaran
             </button>
             
-            <div className="mt-6 flex items-center justify-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+            <div className="mt-6 flex items-center justify-center gap-2 text-xs font-bold text-brand-ink-muted uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4" />
               Transaksi Aman 100%
             </div>
@@ -163,3 +163,4 @@ export default function CheckoutPage() {
     </div>
   );
 }
+

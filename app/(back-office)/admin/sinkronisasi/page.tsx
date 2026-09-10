@@ -36,20 +36,20 @@ export default function SinkronisasiPage() {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-900 p-6 rounded-2xl shadow-lg">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-brand-dark p-6 rounded-2xl shadow-lg">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-            <Server className="h-6 w-6 text-blue-400" />
+            <Server className="h-6 w-6 text-brand" />
             Control Panel: FoxPro Bridge
           </h1>
-          <p className="mt-1 text-sm text-slate-400">Monitoring real-time konektivitas antara sistem cloud Sehati dan server legacy FoxPro.</p>
+          <p className="mt-1 text-sm text-brand-ink-muted">Monitoring real-time konektivitas antara sistem cloud Sehati dan server legacy FoxPro.</p>
         </div>
-        <div className="flex items-center gap-3 px-4 py-2 bg-slate-800 rounded-full border border-slate-700">
+        <div className="flex items-center gap-3 px-4 py-2 bg-brand-dark rounded-full border border-brand-border">
           <div className="relative flex h-3 w-3">
             <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${syncStatus === 'Tersambung' ? 'bg-emerald-400' : 'bg-rose-400'}`}></span>
             <span className={`relative inline-flex rounded-full h-3 w-3 ${syncStatus === 'Tersambung' ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
           </div>
-          <span className="text-sm font-medium text-slate-300 font-mono tracking-wide">
+          <span className="text-sm font-medium text-brand-bg font-mono tracking-wide">
             {syncStatus === 'Tersambung' ? 'SYSTEM.ONLINE' : 'SYSTEM.OFFLINE'}
           </span>
         </div>
@@ -57,15 +57,15 @@ export default function SinkronisasiPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Status Card */}
-        <div className="lg:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="lg:col-span-7 bg-brand-surface rounded-2xl shadow-soft border border-brand-border p-8">
           <div className="flex justify-between items-start mb-8">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center">
-              <Activity className="h-6 w-6 mr-2 text-blue-600" />
+            <h2 className="text-xl font-bold text-brand-ink flex items-center">
+              <Activity className="h-6 w-6 mr-2 text-brand" />
               Status Koneksi
             </h2>
             <button 
               onClick={toggleStatus}
-              className="text-xs px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition-colors font-medium border border-slate-200"
+              className="text-xs px-3 py-1.5 bg-brand-surface hover:bg-brand-border text-brand-ink-muted rounded-lg transition-colors font-medium border border-brand-border"
             >
               Simulasi Status (Demo)
             </button>
@@ -96,18 +96,18 @@ export default function SinkronisasiPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 text-center mb-8">
-            <div className="p-5 bg-slate-50 border border-slate-100 rounded-2xl">
-              <p className="text-sm text-slate-500 font-medium mb-2 uppercase tracking-wider">Terakhir Sinkronisasi</p>
-              <p className="text-2xl font-bold text-slate-900 font-mono">
+            <div className="p-5 bg-brand-bg border border-brand-border rounded-2xl">
+              <p className="text-sm text-brand-ink-muted font-medium mb-2 uppercase tracking-wider">Terakhir Sinkronisasi</p>
+              <p className="text-2xl font-bold text-brand-ink font-mono">
                 {new Date(mockSyncLogs[0].time).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
               </p>
             </div>
-            <div className="p-5 bg-slate-50 border border-slate-100 rounded-2xl">
-              <p className="text-sm text-slate-500 font-medium mb-2 flex items-center justify-center uppercase tracking-wider">
+            <div className="p-5 bg-brand-bg border border-brand-border rounded-2xl">
+              <p className="text-sm text-brand-ink-muted font-medium mb-2 flex items-center justify-center uppercase tracking-wider">
                 <Clock className="h-4 w-4 mr-1.5" />
                 Sync Berikutnya
               </p>
-              <p className="text-2xl font-bold text-blue-600 font-mono">
+              <p className="text-2xl font-bold text-brand font-mono">
                 {formatTime(countdown)}
               </p>
             </div>
@@ -118,8 +118,8 @@ export default function SinkronisasiPage() {
             disabled={isSyncing || syncStatus === 'Gagal Sync'}
             className={`w-full py-4 rounded-xl flex items-center justify-center font-bold text-lg transition-all ${
               isSyncing || syncStatus === 'Gagal Sync'
-                ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
-                : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg shadow-blue-600/20 active:scale-[0.99]'
+                ? 'bg-brand-surface text-brand-ink-muted cursor-not-allowed border border-brand-border'
+                : 'bg-brand hover:bg-brand text-white shadow-md hover:shadow-lg shadow-brand/20 active:scale-[0.99]'
             }`}
           >
             <RefreshCw className={`h-5 w-5 mr-3 ${isSyncing ? 'animate-spin' : ''}`} />
@@ -128,21 +128,21 @@ export default function SinkronisasiPage() {
         </div>
 
         {/* Sync Logs */}
-        <div className="lg:col-span-5 bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-6 flex flex-col h-full text-slate-300">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+        <div className="lg:col-span-5 bg-brand-dark rounded-2xl shadow-lg border border-brand-border p-6 flex flex-col h-full text-brand-bg">
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-brand-border">
             <h2 className="text-lg font-bold text-white flex items-center">
-              <Database className="h-5 w-5 mr-2 text-slate-400" />
+              <Database className="h-5 w-5 mr-2 text-brand-ink-muted" />
               Terminal Log (FoxPro)
             </h2>
-            <span className="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-400 border border-slate-700">LIVE</span>
+            <span className="text-xs font-mono bg-brand-dark px-2 py-1 rounded text-brand-ink-muted border border-brand-border">LIVE</span>
           </div>
           
           <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
             <div className="space-y-4 font-mono text-sm">
               {mockSyncLogs.map((log) => (
-                <div key={log.id} className="flex flex-col bg-slate-800/50 rounded-lg p-3 border border-slate-700/50 hover:bg-slate-800 transition-colors">
+                <div key={log.id} className="flex flex-col bg-brand-dark/50 rounded-lg p-3 border border-brand-border/50 hover:bg-brand-dark transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <span className="text-blue-400">
+                    <span className="text-brand">
                       [{new Date(log.time).toLocaleTimeString('id-ID')}]
                     </span>
                     <span className={`px-2 py-0.5 rounded text-xs font-bold ${
@@ -151,10 +151,10 @@ export default function SinkronisasiPage() {
                       {log.status === 'Tersambung' ? 'SUCCESS' : 'FAILED'}
                     </span>
                   </div>
-                  <div className="flex items-center text-slate-400 text-xs mt-1">
+                  <div className="flex items-center text-brand-ink-muted text-xs mt-1">
                     <ArrowRightLeft className="h-3 w-3 mr-1.5" />
-                    <span className="text-slate-300">JOB_{log.id}</span>
-                    <span className="mx-2 text-slate-600">|</span>
+                    <span className="text-brand-bg">JOB_{log.id}</span>
+                    <span className="mx-2 text-brand-ink-muted">|</span>
                     <span>{log.recordsCount} records synced</span>
                   </div>
                 </div>
@@ -166,3 +166,4 @@ export default function SinkronisasiPage() {
     </div>
   );
 }
+
