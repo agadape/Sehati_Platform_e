@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   MapPin, Plus, Check, Star, Timer, Flame, 
   Wallet, Ticket, ChevronRight, Apple, Beef, 
-  Coffee, Cookie, Sparkles, Droplets, HeartPulse
+  Coffee, Cookie, Sparkles, Droplets, HeartPulse,
+  ShieldCheck, Clock, ThumbsUp
 } from "lucide-react";
 import { mockProducts, mockZones } from "@/lib/mock-data";
 
@@ -56,9 +58,9 @@ export default function CatalogPage() {
   };
 
   return (
-    <div className="space-y-6 pb-6 animate-in fade-in duration-500 max-w-[480px] md:max-w-7xl mx-auto">
+    <div className="space-y-6 md:space-y-10 pb-6 animate-in fade-in duration-500 max-w-[480px] md:max-w-7xl mx-auto">
       
-      {/* 1. Location & Wallet Bar (E-commerce Style) */}
+      {/* 1. Location & Wallet Bar */}
       <div className="flex items-center justify-between gap-2 bg-white p-3 rounded-2xl shadow-soft border border-brand-border/50">
         <div className="flex items-center gap-2 flex-1">
           <div className="p-2 bg-brand/10 rounded-full text-brand shrink-0">
@@ -89,37 +91,66 @@ export default function CatalogPage() {
         </div>
       </div>
 
-      {/* 2. Promo Banner Carousel (E-commerce Style) */}
-      <div className="w-full relative overflow-hidden bg-brand rounded-2xl shadow-soft flex flex-col justify-center p-6 md:p-10 min-h-[160px] md:min-h-[200px] text-brand-bg group cursor-pointer">
-        {/* Abstract pattern */}
-        <div className="absolute right-0 bottom-0 opacity-20 pointer-events-none">
-          <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        
-        <div className="relative z-10 w-full max-w-lg text-left">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-accent text-brand-ink font-bold mb-3 text-[10px] uppercase tracking-wider shadow-sm">
-            <Ticket className="w-3.5 h-3.5" />
-            <span>Promo Sehati</span>
+      {/* 2. Promo Banner Carousel + Trust Badges */}
+      <div className="space-y-4">
+        <div className="w-full relative overflow-hidden bg-brand rounded-3xl shadow-soft flex flex-col justify-center p-6 md:p-10 min-h-[180px] md:min-h-[240px] text-brand-bg group cursor-pointer isolate">
+          {/* Background image & overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80" 
+              alt="Grocery background" 
+              fill 
+              className="object-cover opacity-30 mix-blend-overlay group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand via-brand/90 to-transparent"></div>
           </div>
-          <h2 className="text-2xl md:text-4xl font-display font-bold mb-2 leading-tight text-white group-hover:scale-[1.02] transition-transform origin-left">
-            Diskon 10%<br/>Untuk Semua Sembako
-          </h2>
-          <p className="text-white/80 text-xs md:text-sm">Gunakan kode: <strong className="bg-white/20 px-1.5 py-0.5 rounded">SEHATI10</strong></p>
+
+          {/* Organic basket-weave subtle pattern */}
+          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
+          
+          <div className="relative z-10 w-full max-w-lg text-left">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-accent text-brand-ink font-bold mb-4 text-[10px] uppercase tracking-wider shadow-sm">
+              <Ticket className="w-3.5 h-3.5" />
+              <span>Promo Sehati</span>
+            </div>
+            <h2 className="text-2xl md:text-4xl font-display font-bold mb-3 leading-tight text-white group-hover:-translate-y-1 transition-transform">
+              Diskon 10%<br/>Semua Sembako
+            </h2>
+            <p className="text-white/90 text-sm max-w-[280px]">
+              Klaim potongan langsung untuk belanja bulanan. Gunakan kode: <strong className="bg-white/20 px-1.5 py-0.5 rounded text-white ml-1">SEHATI10</strong>
+            </p>
+          </div>
+
+          {/* Carousel indicators */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            <div className="w-4 h-1.5 bg-white rounded-full"></div>
+            <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
+            <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
+          </div>
         </div>
 
-        {/* Carousel indicators */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-          <div className="w-4 h-1.5 bg-white rounded-full"></div>
-          <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-          <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
+        {/* Trust Badges */}
+        <div className="flex items-center justify-between md:justify-start gap-2 md:gap-8 bg-brand-surface/50 border border-brand-border px-4 py-3 rounded-2xl overflow-x-auto hide-scrollbar text-xs md:text-sm text-brand-ink-muted font-medium">
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <ShieldCheck className="w-4 h-4 text-brand-accent" />
+            <span>Garansi Kualitas</span>
+          </div>
+          <div className="hidden md:block w-1 h-1 rounded-full bg-brand-border"></div>
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <Clock className="w-4 h-4 text-brand-accent" />
+            <span>Pengiriman Same-Day</span>
+          </div>
+          <div className="hidden md:block w-1 h-1 rounded-full bg-brand-border"></div>
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <ThumbsUp className="w-4 h-4 text-brand-accent" />
+            <span>Toko Langganan Terpilih</span>
+          </div>
         </div>
       </div>
 
-      {/* 3. Icon Grid Categories (Shopee/Tokopedia Style) */}
+      {/* 3. Icon Grid Categories */}
       <div className="bg-white p-4 rounded-2xl shadow-soft border border-brand-border/50">
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-y-4 gap-x-2">
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-y-5 gap-x-2">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isActive = activeCategory === cat.name;
@@ -157,50 +188,63 @@ export default function CatalogPage() {
 
       {/* 4. Flash Sale / Kejar Diskon */}
       {activeCategory === 'Semua' && (
-        <div className="bg-gradient-to-br from-rose-500 to-rose-700 rounded-2xl p-4 shadow-soft text-white">
-          <div className="flex items-end justify-between mb-4">
+        <div className="bg-gradient-to-br from-rose-500 to-rose-700 rounded-3xl p-5 shadow-soft text-white relative overflow-hidden isolate">
+          <div className="absolute top-0 right-0 opacity-20 transform translate-x-4 -translate-y-4">
+            <Flame className="w-48 h-48 fill-white/20" />
+          </div>
+          
+          <div className="flex items-end justify-between mb-5 relative z-10">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
                 <Flame className="w-6 h-6 text-brand-accent fill-brand-accent animate-pulse" />
-                <h3 className="font-display font-bold text-xl italic tracking-tight">Kejar Diskon</h3>
+                <h3 className="font-display font-bold text-2xl italic tracking-tight">Kejar Diskon</h3>
               </div>
-              <div className="hidden sm:flex items-center gap-1 bg-black/20 px-2 py-1 rounded-lg text-xs font-mono font-bold backdrop-blur-sm">
+              <div className="hidden sm:flex items-center gap-1 bg-black/20 px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold backdrop-blur-sm shadow-inner">
                 <Timer className="w-3.5 h-3.5" />
                 <span>{String(timeLeft.h).padStart(2, '0')}</span>:
                 <span>{String(timeLeft.m).padStart(2, '0')}</span>:
                 <span>{String(timeLeft.s).padStart(2, '0')}</span>
               </div>
             </div>
-            <Link href="/" className="text-xs font-bold flex items-center hover:underline">
-              Lihat Semua <ChevronRight className="w-3.5 h-3.5" />
+            <Link href="/" className="text-xs font-bold flex items-center hover:underline bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              Lihat Semua <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
             </Link>
           </div>
           
-          <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2 snap-x">
+          <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x relative z-10">
             {flashSaleProducts.map((product) => (
-              <Link href={`/produk/${product.id}`} key={`flash-${product.id}`} className="snap-start min-w-[140px] w-[140px] md:min-w-[180px] bg-white rounded-xl overflow-hidden flex flex-col group cursor-pointer relative shadow-sm">
-                <div className="absolute top-0 left-0 bg-brand-accent text-brand-ink text-[10px] font-bold px-2 py-0.5 rounded-br-lg z-10">
+              <Link href={`/produk/${product.id}`} key={`flash-${product.id}`} className="snap-start min-w-[150px] w-[150px] md:min-w-[180px] bg-white rounded-2xl overflow-hidden flex flex-col group cursor-pointer relative shadow-lg ring-2 ring-white/20">
+                <div className="absolute top-0 left-0 bg-brand-accent text-brand-ink text-[10px] font-bold px-2 py-1 rounded-br-xl z-10 shadow-sm flex items-center gap-1">
+                  <Flame className="w-3 h-3" />
                   -50%
                 </div>
-                <div className="aspect-square bg-white p-3">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+                <div className="relative aspect-square bg-brand-surface/20 p-2">
+                  <Image 
+                    src={product.image} 
+                    alt={product.name} 
+                    fill
+                    sizes="(max-width: 768px) 150px, 180px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl" 
+                  />
                 </div>
-                <div className="p-3 pt-1 flex flex-col flex-1 bg-white">
-                  <div className="text-rose-600 font-display font-bold text-lg leading-none mb-1">
+                <div className="p-3 pt-2 flex flex-col flex-1 bg-white">
+                  <div className="text-rose-600 font-display font-bold text-lg md:text-xl leading-none mb-1">
                     Rp{(product.price / 2).toLocaleString('id-ID')}
                   </div>
-                  <div className="text-gray-400 text-[10px] line-through font-medium mb-2">
+                  <div className="text-brand-ink-muted/50 text-[10px] md:text-xs line-through font-medium mb-3">
                     Rp{product.price.toLocaleString('id-ID')}
                   </div>
                   
                   {/* Progress bar */}
                   <div className="mt-auto">
-                    <div className="w-full bg-rose-100 rounded-full h-1.5 mb-1 overflow-hidden">
-                      <div className="bg-rose-500 h-full w-[80%] rounded-full"></div>
+                    <div className="w-full bg-rose-100 rounded-full h-2 mb-1.5 overflow-hidden">
+                      <div className="bg-gradient-to-r from-rose-500 to-rose-600 h-full w-[80%] rounded-full relative">
+                        <div className="absolute inset-0 bg-white/20 w-full animate-[shimmer_2s_infinite]"></div>
+                      </div>
                     </div>
-                    <div className="text-[9px] font-bold text-rose-600 text-center uppercase tracking-wider">
-                      Sisa 5
+                    <div className="text-[10px] font-bold text-rose-600 text-center uppercase tracking-wider flex items-center justify-center gap-1">
+                      <Timer className="w-3 h-3" />
+                      Tersisa 5
                     </div>
                   </div>
                 </div>
@@ -211,55 +255,60 @@ export default function CatalogPage() {
       )}
 
       {/* 5. Main Product Grid */}
-      <div>
-        <div className="flex items-center justify-between mb-4 mt-2">
-          <h3 className="font-display font-bold text-xl text-brand-ink">Rekomendasi Untukmu</h3>
+      <div className="pt-4">
+        <div className="flex items-center justify-between mb-5">
+          <h3 className="font-display font-bold text-2xl text-brand-ink">Rekomendasi Untukmu</h3>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-5">
           {filteredProducts.map((product) => (
-            <Link href={`/produk/${product.id}`} key={product.id} className="group bg-white rounded-2xl overflow-hidden shadow-soft border border-transparent hover:border-brand-border hover:-translate-y-1 transition-all duration-300 flex flex-col relative">
+            <Link href={`/produk/${product.id}`} key={product.id} className="group bg-white rounded-2xl overflow-hidden shadow-soft border border-brand-border/40 hover:border-brand/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col relative">
               
               <div className={`absolute top-0 left-0 right-0 h-1 z-20 ${getCategoryColor(product.category)}`}></div>
 
-              <div className="relative aspect-square bg-white p-4 pt-5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={product.image} alt={product.name} className="object-contain w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+              <div className="relative aspect-square bg-brand-surface/20">
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
                 
                 {/* Bebas Ongkir Badge */}
-                <div className="absolute bottom-0 left-0 bg-green-500 text-white text-[9px] font-bold px-2 py-1 rounded-tr-xl flex items-center gap-1 shadow-sm">
+                <div className="absolute bottom-0 left-0 bg-green-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-tr-xl flex items-center gap-1 shadow-sm">
                   <Droplets className="w-3 h-3" />
                   Bebas Ongkir
                 </div>
               </div>
               
-              <div className="p-3.5 flex flex-col flex-1 border-t border-brand-border/30">
-                <h4 className="text-xs md:text-sm font-medium text-brand-ink line-clamp-2 min-h-[36px] leading-snug group-hover:text-brand transition-colors mb-1.5">
+              <div className="p-4 flex flex-col flex-1 border-t border-brand-border/30">
+                <h4 className="text-xs md:text-sm font-medium text-brand-ink line-clamp-2 min-h-[36px] md:min-h-[40px] leading-snug group-hover:text-brand transition-colors mb-2">
                   {product.name}
                 </h4>
                 
-                <div className="font-display font-bold text-base md:text-lg text-brand-ink mb-1.5">
+                <div className="font-display font-bold text-base md:text-lg text-brand-ink mb-2">
                   Rp{product.price.toLocaleString('id-ID')}
                 </div>
 
-                <div className="flex items-center gap-1 text-[10px] text-brand-ink-muted mb-3">
-                  <Star className="w-3 h-3 text-brand-accent fill-brand-accent" />
-                  <span className="font-bold">4.9</span>
-                  <span className="w-0.5 h-0.5 rounded-full bg-brand-border mx-0.5"></span>
+                <div className="flex items-center gap-1 text-[10px] text-brand-ink-muted mb-4">
+                  <Star className="w-3.5 h-3.5 text-brand-accent fill-brand-accent" />
+                  <span className="font-bold text-brand-ink">4.9</span>
+                  <span className="w-1 h-1 rounded-full bg-brand-border mx-1"></span>
                   <span>Terjual 1rb+</span>
                 </div>
                 
                 <div className="mt-auto">
                   <button 
                     onClick={(e) => handleAdd(product.id, e)}
-                    className={`w-full flex items-center justify-center gap-1.5 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 ${
+                    className={`w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-95 ${
                       addedItem === product.id 
                       ? 'bg-green-100 text-green-700 border border-green-200' 
                       : 'bg-brand/5 border border-brand/20 text-brand hover:bg-brand hover:text-white'
                     }`}
                   >
                     {addedItem === product.id ? (
-                      <><Check className="w-4 h-4" /> Masuk Keranjang</>
+                      <><Check className="w-4 h-4" /> Ditambahkan</>
                     ) : (
                       <><Plus className="w-4 h-4 stroke-[3]" /> Tambah</>
                     )}

@@ -2,6 +2,7 @@
 
 import { useState, use } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { mockProducts } from "@/lib/mock-data";
 import { ChevronLeft, Minus, Plus, ShoppingCart, Share2, Heart, ShieldCheck, Truck } from "lucide-react";
 
@@ -47,8 +48,14 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               PROMO SPESIAL
             </div>
           )}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={product.image} alt={product.name} className="object-contain w-full h-full mix-blend-multiply drop-shadow-soft hover:scale-105 transition-transform duration-500" />
+          <Image 
+            src={product.image} 
+            alt={product.name} 
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500" 
+            priority
+          />
         </div>
         
         {/* Product Info */}

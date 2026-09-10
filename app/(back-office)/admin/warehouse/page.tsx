@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { mockProducts } from '@/lib/mock-data';
 import { Search, Plus, Minus, Package } from 'lucide-react';
 
@@ -78,8 +79,14 @@ export default function WarehousePage() {
                   <tr key={product.id} className="hover:bg-brand-bg transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 h-12 w-12 bg-brand-surface rounded-lg overflow-hidden border border-brand-border">
-                          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+                        <div className="h-10 w-10 flex-shrink-0 bg-brand-bg rounded-lg p-1 border border-brand-border/50 relative">
+                          <Image 
+                            src={product.image} 
+                            alt={product.name} 
+                            fill
+                            sizes="40px"
+                            className="object-cover rounded-md" 
+                          />
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-bold text-brand-ink">{product.name}</div>

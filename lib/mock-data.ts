@@ -38,26 +38,26 @@ export interface SyncLog {
 }
 
 export const mockProducts: Product[] = [
-  { id: 'P001', name: 'Indomie Goreng Original', price: 3000, category: 'Makanan', stock: 150, image: 'https://placehold.co/400x400/png?text=Indomie', description: 'Mie instan goreng favorit.' },
-  { id: 'P002', name: 'Beras Pandan Wangi 5kg', price: 65000, category: 'Sembako', stock: 20, image: 'https://placehold.co/400x400/png?text=Beras', description: 'Beras kualitas premium.' },
-  { id: 'P003', name: 'Minyak Goreng Bimoli 2L', price: 38000, category: 'Sembako', stock: 50, image: 'https://placehold.co/400x400/png?text=Minyak+Bimoli', description: 'Minyak goreng kelapa sawit pilihan.' },
-  { id: 'P004', name: 'Aqua Botol 600ml', price: 3500, category: 'Minuman', stock: 200, image: 'https://placehold.co/400x400/png?text=Aqua', description: 'Air mineral dalam kemasan botol.' },
-  { id: 'P005', name: 'Teh Pucuk Harum 350ml', price: 4000, category: 'Minuman', stock: 80, image: 'https://placehold.co/400x400/png?text=Teh+Pucuk', description: 'Minuman teh melati.' },
-  { id: 'P006', name: 'Silverqueen Cashew 62g', price: 15000, category: 'Cemilan', stock: 45, image: 'https://placehold.co/400x400/png?text=Silverqueen', description: 'Cokelat susu dengan kacang mete.' },
-  { id: 'P007', name: 'Chitato Sapi Panggang', price: 10000, category: 'Cemilan', stock: 30, image: 'https://placehold.co/400x400/png?text=Chitato', description: 'Keripik kentang rasa sapi panggang.' },
-  { id: 'P008', name: 'Sunsilk Black Shine 170ml', price: 22000, category: 'Perawatan Diri', stock: 15, image: 'https://placehold.co/400x400/png?text=Sunsilk', description: 'Shampoo untuk rambut hitam berkilau.' },
-  { id: 'P009', name: 'Pepsodent White 190g', price: 12000, category: 'Perawatan Diri', stock: 60, image: 'https://placehold.co/400x400/png?text=Pepsodent', description: 'Pasta gigi pencegah gigi berlubang.' },
-  { id: 'P010', name: 'Rinso Anti Noda 800g', price: 25000, category: 'Kebersihan', stock: 40, image: 'https://placehold.co/400x400/png?text=Rinso', description: 'Deterjen bubuk anti noda.' },
-  { id: 'P011', name: 'Sunlight Jeruk Nipis 755ml', price: 18000, category: 'Kebersihan', stock: 55, image: 'https://placehold.co/400x400/png?text=Sunlight', description: 'Cairan pencuci piring.' },
-  { id: 'P012', name: 'Sari Roti Tawar', price: 16000, category: 'Makanan', stock: 5, image: 'https://placehold.co/400x400/png?text=Sari+Roti', description: 'Roti tawar lembut.' },
-  { id: 'P013', name: 'Kopi Kapal Api Mix', price: 13000, category: 'Minuman', stock: 100, image: 'https://placehold.co/400x400/png?text=Kapal+Api', description: 'Kopi bubuk instan dengan gula.' },
-  { id: 'P014', name: 'Susu Beruang Bear Brand', price: 11000, category: 'Minuman', stock: 25, image: 'https://placehold.co/400x400/png?text=Bear+Brand', description: 'Susu steril murni.' },
-  { id: 'P015', name: 'Taro Net Seaweed', price: 6000, category: 'Cemilan', stock: 40, image: 'https://placehold.co/400x400/png?text=Taro', description: 'Snack rasa rumput laut.' },
-  { id: 'P016', name: 'Kecap Bango 520ml', price: 24000, category: 'Sembako', stock: 35, image: 'https://placehold.co/400x400/png?text=Kecap+Bango', description: 'Kecap manis kedelai hitam.' },
-  { id: 'P017', name: 'Saos Sambal ABC 340ml', price: 16000, category: 'Sembako', stock: 40, image: 'https://placehold.co/400x400/png?text=Saos+ABC', description: 'Saos sambal ekstra pedas.' },
-  { id: 'P018', name: 'Tolak Angin Cair', price: 4000, category: 'Kesehatan', stock: 120, image: 'https://placehold.co/400x400/png?text=Tolak+Angin', description: 'Herbal masuk angin.' },
-  { id: 'P019', name: 'Insto Reguler 7.5ml', price: 15000, category: 'Kesehatan', stock: 20, image: 'https://placehold.co/400x400/png?text=Insto', description: 'Obat tetes mata.' },
-  { id: 'P020', name: 'Pocari Sweat 500ml', price: 8000, category: 'Minuman', stock: 65, image: 'https://placehold.co/400x400/png?text=Pocari', description: 'Minuman isotonik penghenti dahaga.' }
+  { id: 'P001', name: 'Indomie Goreng Original', price: 3000, category: 'Makanan', stock: 150, image: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&q=80', description: 'Mie instan goreng favorit.' },
+  { id: 'P002', name: 'Beras Pandan Wangi 5kg', price: 65000, category: 'Sembako', stock: 20, image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80', description: 'Beras kualitas premium.' },
+  { id: 'P003', name: 'Minyak Goreng Bimoli 2L', price: 38000, category: 'Sembako', stock: 50, image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', description: 'Minyak goreng kelapa sawit pilihan.' },
+  { id: 'P004', name: 'Aqua Botol 600ml', price: 3500, category: 'Minuman', stock: 200, image: 'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=400&q=80', description: 'Air mineral dalam kemasan botol.' },
+  { id: 'P005', name: 'Teh Pucuk Harum 350ml', price: 4000, category: 'Minuman', stock: 80, image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80', description: 'Minuman teh melati.' },
+  { id: 'P006', name: 'Silverqueen Cashew 62g', price: 15000, category: 'Cemilan', stock: 45, image: 'https://images.unsplash.com/photo-1548907040-4c42fa260840?w=400&q=80', description: 'Cokelat susu dengan kacang mete.' },
+  { id: 'P007', name: 'Chitato Sapi Panggang', price: 10000, category: 'Cemilan', stock: 30, image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80', description: 'Keripik kentang rasa sapi panggang.' },
+  { id: 'P008', name: 'Sunsilk Black Shine 170ml', price: 22000, category: 'Perawatan Diri', stock: 15, image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80', description: 'Shampoo untuk rambut hitam berkilau.' },
+  { id: 'P009', name: 'Pepsodent White 190g', price: 12000, category: 'Perawatan Diri', stock: 60, image: 'https://images.unsplash.com/photo-1559599189-e160e1dc9f02?w=400&q=80', description: 'Pasta gigi pencegah gigi berlubang.' },
+  { id: 'P010', name: 'Rinso Anti Noda 800g', price: 25000, category: 'Kebersihan', stock: 40, image: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&q=80', description: 'Deterjen bubuk anti noda.' },
+  { id: 'P011', name: 'Sunlight Jeruk Nipis 755ml', price: 18000, category: 'Kebersihan', stock: 55, image: 'https://images.unsplash.com/photo-1585832770485-e68a5dbcf524?w=400&q=80', description: 'Cairan pencuci piring.' },
+  { id: 'P012', name: 'Sari Roti Tawar', price: 16000, category: 'Makanan', stock: 5, image: 'https://images.unsplash.com/photo-1598373182133-52452f7691ef?w=400&q=80', description: 'Roti tawar lembut.' },
+  { id: 'P013', name: 'Kopi Kapal Api Mix', price: 13000, category: 'Minuman', stock: 100, image: 'https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=400&q=80', description: 'Kopi bubuk instan dengan gula.' },
+  { id: 'P014', name: 'Susu Beruang Bear Brand', price: 11000, category: 'Minuman', stock: 25, image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80', description: 'Susu steril murni.' },
+  { id: 'P015', name: 'Taro Net Seaweed', price: 6000, category: 'Cemilan', stock: 40, image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80', description: 'Snack rasa rumput laut.' },
+  { id: 'P016', name: 'Kecap Bango 520ml', price: 24000, category: 'Sembako', stock: 35, image: 'https://images.unsplash.com/photo-1584916201218-f4242ceb4809?w=400&q=80', description: 'Kecap manis kedelai hitam.' },
+  { id: 'P017', name: 'Saos Sambal ABC 340ml', price: 16000, category: 'Sembako', stock: 40, image: 'https://images.unsplash.com/photo-1558961363-a0c6e8ec98b3?w=400&q=80', description: 'Saos sambal ekstra pedas.' },
+  { id: 'P018', name: 'Tolak Angin Cair', price: 4000, category: 'Kesehatan', stock: 120, image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8?w=400&q=80', description: 'Herbal masuk angin.' },
+  { id: 'P019', name: 'Insto Reguler 7.5ml', price: 15000, category: 'Kesehatan', stock: 20, image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&q=80', description: 'Obat tetes mata.' },
+  { id: 'P020', name: 'Pocari Sweat 500ml', price: 8000, category: 'Minuman', stock: 65, image: 'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&q=80', description: 'Minuman isotonik penghenti dahaga.' }
 ];
 
 export const mockZones: Zone[] = [

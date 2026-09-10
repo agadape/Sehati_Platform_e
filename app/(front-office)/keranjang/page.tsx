@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft, Minus, Plus, Trash2, AlertCircle, ShoppingBag, ShieldCheck } from "lucide-react";
 import { mockProducts } from "@/lib/mock-data";
 import { useRouter } from "next/navigation";
@@ -53,9 +54,14 @@ export default function CartPage() {
           <div className="lg:flex-1 space-y-4">
             {items.map((item, index) => (
               <div key={item.product.id} className="bg-brand-surface p-4 rounded-2xl border border-brand-border shadow-soft flex gap-4 hover:border-brand transition-colors">
-                <div className="w-24 h-24 bg-brand-bg rounded-xl overflow-hidden flex-shrink-0 p-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.product.image} alt={item.product.name} className="w-full h-full object-contain mix-blend-multiply" />
+                <div className="w-20 h-20 bg-brand-surface/50 rounded-xl flex-shrink-0 p-2 border border-brand-border/30 relative">
+                  <Image 
+                    src={item.product.image} 
+                    alt={item.product.name} 
+                    fill
+                    sizes="80px"
+                    className="object-contain mix-blend-multiply p-2" 
+                  />
                 </div>
                 <div className="flex-1 flex flex-col justify-between py-1">
                   <div>
