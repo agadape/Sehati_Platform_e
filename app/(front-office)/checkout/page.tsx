@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, MapPin, Ticket, Clock, CheckCircle, ShieldCheck } from "lucide-react";
+import { ChevronLeft, MapPin, Ticket, Clock, CheckCircle, ShieldCheck, AlertCircle } from "lucide-react";
 import { mockZones } from "@/lib/mock-data";
 
 export default function CheckoutPage() {
