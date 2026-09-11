@@ -68,9 +68,9 @@ export default function FrontOfficeLayout({
               <span className="absolute top-1.5 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
             </button>
 
-            <Link href="/keranjang" className="relative p-2 text-brand-ink-muted hover:bg-brand/10 hover:text-brand rounded-full transition-colors">
-              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
-              <span className="absolute top-0 right-0 bg-brand-accent border-2 border-white text-brand-ink text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
+            <Link href="/keranjang" className="relative p-2 text-brand-ink-muted hover:bg-brand/10 hover:text-brand rounded-full transition-colors group">
+              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+              <span className="absolute top-0 right-0 bg-brand-accent border-2 border-white text-brand-ink text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-sm animate-bounce">
                 2
               </span>
             </Link>

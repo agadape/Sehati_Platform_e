@@ -29,6 +29,8 @@ export const viewport = {
   maximumScale: 1,
 };
 
+import { ToastProvider } from "@/components/shared/ToastProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +39,9 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${jakarta.variable} ${fraunces.variable} font-sans antialiased bg-brand-bg text-brand-ink`}>
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </body>
     </html>
   );

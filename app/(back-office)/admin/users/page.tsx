@@ -1,10 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { mockUsers } from '@/lib/mock-data';
-import { UserPlus, Shield, MoreVertical } from 'lucide-react';
+import { UserPlus, Shield, MoreVertical, X, CheckCircle2 } from 'lucide-react';
+import { useToast } from "@/components/shared/ToastProvider";
 
 export default function UsersPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { addToast } = useToast();
+
+  const handleAddUser = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsModalOpen(false);
+      addToast("User baru berhasil ditambahkan!", "success");
+    }, 1500);
+  };
+
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -12,7 +27,10 @@ export default function UsersPage() {
           <h1 className="text-2xl font-bold text-brand-ink">Manajemen User & Akses</h1>
           <p className="mt-1 text-sm text-brand-ink-muted">Kelola pengguna internal back-office dan hak akses mereka.</p>
         </div>
-        <button className="flex items-center bg-brand hover:bg-brand text-white px-5 py-2.5 rounded-lg transition-colors font-semibold shadow-soft shadow-brand/20 active:scale-95">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="flex items-center bg-brand hover:bg-brand text-white px-5 py-2.5 rounded-lg transition-colors font-semibold shadow-soft shadow-brand/20 active:scale-95"
+        >
           <UserPlus className="h-5 w-5 mr-2" />
           Tambah User Baru
         </button>
@@ -65,6 +83,72 @@ export default function UsersPage() {
           </table>
         </div>
       </div>
+
+      {/* Slide-over Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-hidden flex items-center justify-end bg-brand-dark/50 backdrop-blur-sm transition-opacity">
+          <div className="absolute inset-0" onClick={() => setIsModalOpen(false)}></div>
+          
+          <div className="w-full max-w-md h-full bg-brand-surface shadow-2xl relative flex flex-col animate-in slide-in-from-right duration-300">
+            <div className="flex items-center justify-between p-6 border-b border-brand-border bg-white">
+              <h2 className="text-xl font-bold text-brand-ink font-display">Tambah User Baru</h2>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 bg-brand-surface rounded-full text-brand-ink-muted hover:text-brand-ink transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-6 bg-brand-surface">
+              <form id="addUserForm" onSubmit={handleAddUser} className="space-y-5">
+                <div>
+                  <label className="block text-sm font-bold text-brand-ink mb-1.5">Nama Lengkap</label>
+                  <input type="text" required placeholder="Cth: Sarah Wijaya" className="w-full border border-brand-border p-3 rounded-xl focus:ring-2 focus:ring-brand focus:outline-none bg-white" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-brand-ink mb-1.5">Email Karyawan</label>
+                  <input type="email" required placeholder="sarah@sehati.com" className="w-full border border-brand-border p-3 rounded-xl focus:ring-2 focus:ring-brand focus:outline-none bg-white" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-brand-ink mb-1.5">Peran (Role)</label>
+                  <div className="relative">
+                    <select required className="w-full border border-brand-border p-3 rounded-xl focus:ring-2 focus:ring-brand focus:outline-none bg-white appearance-none cursor-pointer">
+                      <option value="">Pilih peran akses...</option>
+                      <option value="Admin Master">Admin Master</option>
+                      <option value="Staff Gudang">Staff Gudang</option>
+                      <option value="Staff Laporan">Staff Laporan</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+            <div className="p-6 border-t border-brand-border bg-white flex justify-end gap-3">
+              <button 
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="px-5 py-2.5 rounded-xl text-brand-ink-muted font-bold hover:bg-brand-bg transition-colors"
+              >
+                Batal
+              </button>
+              <button 
+                form="addUserForm"
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-brand text-white font-bold px-6 py-2.5 rounded-xl hover:opacity-90 transition-all flex items-center gap-2 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                ) : (
+                  <CheckCircle2 className="w-5 h-5" />
+                )}
+                {isSubmitting ? "Menyimpan..." : "Simpan User"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
