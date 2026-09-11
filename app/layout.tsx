@@ -15,6 +15,18 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Sehati - E-Commerce & Logistik",
   description: "Platform E-Commerce & Logistik Retail Berbasis Web",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Sehati",
+  },
+};
+
+export const viewport = {
+  themeColor: "#1F6E4A",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

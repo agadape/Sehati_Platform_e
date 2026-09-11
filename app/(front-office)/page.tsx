@@ -1,17 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { 
   MapPin, Plus, Check, Star, Timer, Flame, 
   Wallet, Ticket, ChevronRight, Apple, Beef, 
   Coffee, Cookie, Sparkles, Droplets, HeartPulse,
-  ShieldCheck, Clock, ThumbsUp
+  ShieldCheck, Clock, ThumbsUp, SearchX
 } from "lucide-react";
 import { mockProducts, mockZones } from "@/lib/mock-data";
 
-export default function CatalogPage() {
+function CatalogContent() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q")?.toLowerCase() || "";
+
   const [selectedZone, setSelectedZone] = useState(mockZones[0].id);
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [addedItem, setAddedItem] = useState<string | null>(null);
@@ -41,9 +45,13 @@ export default function CatalogPage() {
     { name: 'Kesehatan', icon: HeartPulse, color: 'bg-cat-kesehatan' },
   ];
   
-  const filteredProducts = activeCategory === 'Semua' 
+  let filteredProducts = activeCategory === 'Semua' 
     ? mockProducts 
     : mockProducts.filter(p => p.category === activeCategory);
+
+  if (query) {
+    filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(query));
+  }
 
   const flashSaleProducts = mockProducts.slice(0, 4);
 
@@ -318,7 +326,25 @@ export default function CatalogPage() {
             </Link>
           ))}
         </div>
+        
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-20 bg-white rounded-3xl border border-brand-border/50 shadow-soft mt-5">
+            <div className="w-20 h-20 bg-brand-surface rounded-full flex items-center justify-center mx-auto mb-5 text-brand-ink-muted">
+              <SearchX className="w-10 h-10" />
+            </div>
+            <h3 className="text-xl font-bold text-brand-ink mb-2">Produk Tidak Ditemukan</h3>
+            <p className="text-brand-ink-muted">Maaf, kami tidak dapat menemukan produk "{query}".</p>
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+export default function CatalogPage() {
+  return (
+    <Suspense fallback={<div>Loading catalog...</div>}>
+      <CatalogContent />
+    </Suspense>
   );
 }

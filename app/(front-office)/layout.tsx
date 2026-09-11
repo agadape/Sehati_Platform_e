@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ShoppingCart, Home, User, Package, Search, Bell } from "lucide-react";
 
 export default function FrontOfficeLayout({
@@ -10,6 +11,17 @@ export default function FrontOfficeLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/?q=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push("/");
+    }
+  };
 
   const isHome = pathname === "/";
   const isPesanan = pathname.startsWith("/pesanan");
@@ -30,17 +42,19 @@ export default function FrontOfficeLayout({
           </Link>
 
           <div className="flex-1 max-w-2xl mx-auto hidden md:block">
-            <div className="relative group">
+            <form onSubmit={handleSearch} className="relative group">
               <input 
                 type="text" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari sayur, beras, daging..." 
                 className="w-full pl-11 pr-4 py-2.5 border border-brand-border rounded-xl bg-brand-surface focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm transition-all placeholder-brand-ink-muted/70"
               />
               <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-brand-ink-muted group-focus-within:text-brand transition-colors" />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-brand text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-brand-dark transition-colors">
+              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 bg-brand text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-brand-dark transition-colors">
                 Cari
               </button>
-            </div>
+            </form>
           </div>
 
           <div className="flex items-center gap-1 md:gap-3 flex-shrink-0">
@@ -71,14 +85,16 @@ export default function FrontOfficeLayout({
         
         {/* Mobile Search Bar below header - typical e-commerce pattern */}
         <div className="md:hidden px-4 pb-3 bg-white">
-          <div className="relative group">
+          <form onSubmit={handleSearch} className="relative group">
             <input 
               type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari sayur, beras, daging..." 
               className="w-full pl-10 pr-4 py-2 border border-brand-border rounded-xl bg-brand-surface focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm transition-all placeholder-brand-ink-muted/70"
             />
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-ink-muted group-focus-within:text-brand transition-colors" />
-          </div>
+          </form>
         </div>
       </header>
 
